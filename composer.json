@@ -1,0 +1,14 @@
+{
+	"name": "lsjroberts/tesco-php",
+	"description": "Tesco API PHP Package",
+	"keywords": ["tesco"],
+	"license": "MIT",
+	"require": {
+		"guzzle/guzzle": "3.7.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Lsjroberts\\Tesco\\": "src/Lsjroberts/Tesco"
+		}
+	}
+}
