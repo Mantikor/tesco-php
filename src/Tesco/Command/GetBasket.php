@@ -1,6 +1,7 @@
 <?php namespace Tesco\Command;
 
-use Tesco\Basket;
+use Tesco\Resource\Basket;
+use Tesco\Exception\ClientException;
 
 class GetBasket extends Command
 {
@@ -11,8 +12,13 @@ class GetBasket extends Command
         $request->getQuery()
             ->set('fast', ($fast) ? 'Y' : 'N');
 
-        $response = $request->send();
+        $response = $request->send()->json();
 
-        return new Basket($response->json());
+        if (0 !== $response['StatusCode'])
+        {
+            throw new ClientException($response['StatusInfo']);
+        }
+
+        return new Basket($response);
     }
 }

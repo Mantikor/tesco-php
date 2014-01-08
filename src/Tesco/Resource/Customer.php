@@ -1,4 +1,4 @@
-<?php namespace Tesco;
+<?php namespace Tesco\Resource;
 
 class Customer
 {
@@ -21,6 +21,6 @@ class Customer
 
     public function getFirstName()
     {
-    	//
+    	return $this->session['CustomerForename'];
     }
 }

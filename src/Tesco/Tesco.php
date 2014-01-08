@@ -4,8 +4,8 @@ use Guzzle\Http\Client;
 
 class Tesco
 {
-    public $devKey;
-    public $appKey;
+    protected $devKey;
+    protected $appKey;
 
     protected $client;
     protected $baseUrl = "http://www.techfortesco.com/groceryapi/RESTService.aspx";
@@ -23,6 +23,16 @@ class Tesco
     public function getClient()
     {
         return $this->client;
+    }
+
+    public function getDevKey()
+    {
+        return $this->devKey;
+    }
+
+    public function getAppKey()
+    {
+        return $this->appKey;
     }
 
     public function setSessionKey($sessionKey)
@@ -47,7 +57,7 @@ class Tesco
         $args = func_get_args();
         array_shift($args);
 
-        $class = $className($this);
+        $class = new $className($this);
 
         return call_user_func_array([$class, 'get'], $args);
     }

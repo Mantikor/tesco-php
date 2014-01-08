@@ -34,10 +34,8 @@ abstract class Command
         $request = $this->getRequest($command);
 
         $request->getQuery()
-            ->set('session', $this->tesco->getSessionKey());
+            ->set('sessionkey', $this->tesco->getSessionKey());
 
         return $request;
     }
-
-    abstract public function get();
 }

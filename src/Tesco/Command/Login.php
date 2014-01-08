@@ -1,6 +1,6 @@
 <?php namespace Tesco\Command;
 
-use Tesco\Customer;
+use Tesco\Resource\Customer;
 
 class Login extends Command
 {

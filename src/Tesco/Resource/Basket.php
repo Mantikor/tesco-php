@@ -1,4 +1,4 @@
-<?php namespace Tesco;
+<?php namespace Tesco\Resource;
 
 class Basket
 {
