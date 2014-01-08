@@ -1,6 +1,6 @@
 <?php namespace Tesco;
 
-class Customer implements CustomerInterface
+class Customer
 {
     protected $session;
 

@@ -12,6 +12,13 @@ class Login extends Command
 
         $response = $request->send();
 
-        return $response->json();
+        $session = $response->json();
+
+        if (isset($session['SessionKey']))
+        {
+            $this->tesco->setSessionKey($session['SessionKey']);
+        }
+
+        return $session;
     }
 }

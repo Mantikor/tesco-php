@@ -23,8 +23,18 @@ abstract class Command
         $request = $this->getRequest($command);
 
         $request->getQuery()
-            ->set('developerkey', $this->tesco->devKey)
-            ->set('applicationkey', $this->tesco->appKey);
+            ->set('developerkey', $this->tesco->getDevKey())
+            ->set('applicationkey', $this->tesco->getAppKey());
+
+        return $request;
+    }
+
+    public function getRequestWithSession($command)
+    {
+        $request = $this->getRequest($command);
+
+        $request->getQuery()
+            ->set('session', $this->tesco->getSessionKey());
 
         return $request;
     }

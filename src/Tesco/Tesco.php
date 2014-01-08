@@ -23,9 +23,14 @@ class Tesco
         return $this->client;
     }
 
+    public function setSessionKey($sessionKey)
+    {
+        $this->sessionKey = $sessionKey;
+    }
+
     public function getCommand($command)
     {
-        $className = '\\Tesco\\Command\\' . $command;
+        $className = '\\Tesco\\Command\\' . ucfirst($command);
 
         $args = func_get_args();
         array_shift($args);
@@ -33,5 +38,10 @@ class Tesco
         $class = $className($this);
 
         return call_user_func_array([$class, 'get'], $args);
+    }
+
+    public function __call($method, $arguments)
+    {
+        return call_user_func_array([$this, 'getCommand'], array_merge(array($method), $arguments));
     }
 }

@@ -24,7 +24,7 @@ class TescoTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(200, $statusCode);
     }
 
-    public function testServerDateTimeCommand()
+    public function testCanCallCommand()
     {
         $request = $this->tesco->getClient()->get();
 
