@@ -1,5 +1,7 @@
 <?php namespace Tesco\Command;
 
+use Tesco\Customer;
+
 class Login extends Command
 {
     public function get($email, $password)
@@ -14,11 +16,16 @@ class Login extends Command
 
         $session = $response->json();
 
+        if (0 !== $session['StatusCode'])
+        {
+            throw new LoginException("Invalid status returned for login request");
+        }
+
         if (isset($session['SessionKey']))
         {
             $this->tesco->setSessionKey($session['SessionKey']);
         }
 
-        return $session;
+        return new Customer($session);
     }
 }

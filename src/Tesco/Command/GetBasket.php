@@ -1,6 +1,8 @@
 <?php namespace Tesco\Command;
 
-class ListBasket extends Command
+use Tesco\Basket;
+
+class GetBasket extends Command
 {
     public function get($fast = true)
     {
@@ -11,6 +13,6 @@ class ListBasket extends Command
 
         $response = $request->send();
 
-        return $response->json();
+        return new Basket($response->json());
     }
 }

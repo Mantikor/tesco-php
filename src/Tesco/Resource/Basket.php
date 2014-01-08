@@ -1,10 +1,10 @@
 <?php namespace Tesco;
 
-class Basket implements BasketInterface
+class Basket
 {
     protected $data;
 
-    public function setData($data)
+    public function __construct($data)
     {
         $this->data = $data;
     }

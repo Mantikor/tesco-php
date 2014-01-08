@@ -6,9 +6,11 @@ class Tesco
 {
     public $devKey;
     public $appKey;
-    
+
     protected $client;
     protected $baseUrl = "http://www.techfortesco.com/groceryapi/RESTService.aspx";
+
+    protected $sessionKey;
 
     public function __construct($devKey, $appKey)
     {
@@ -26,6 +28,16 @@ class Tesco
     public function setSessionKey($sessionKey)
     {
         $this->sessionKey = $sessionKey;
+    }
+
+    public function getSessionKey()
+    {
+        if (null === $this->sessionKey)
+        {
+            throw new Exception("Session key has not yet been set, user must be logged in first.");
+        }
+
+        return $this->sessionKey;
     }
 
     public function getCommand($command)

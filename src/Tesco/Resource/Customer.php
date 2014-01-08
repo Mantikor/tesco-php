@@ -4,13 +4,23 @@ class Customer
 {
     protected $session;
 
-    public function setSession($session)
+    public function __construct($session)
     {
-        $this->session = $data;
+        $this->session = $session;
     }
 
-    public function getSession()
+    public function getID()
     {
-        return $this->session;
+    	return $this->session['CustomerID'];
+    }
+
+    public function getName()
+    {
+    	return $this->session['CustomerName'];
+    }
+
+    public function getFirstName()
+    {
+    	//
     }
 }
