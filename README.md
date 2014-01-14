@@ -3,6 +3,36 @@ Tesco PHP
 
 - [API Documentation](https://secure.techfortesco.com/tescoapiweb/Tesco%20Grocery%20API%20Beta%201%20Edition%20-%20REST%20Reference%20Guide%201.0.0.26.pdf)
 
+Installation
+---
+
+Add `"lsjroberts/tesco-php": "dev-master"` to your `composer.json`. _Note: this is still in early development so there are not yet any tagged releases._
+
+#### Laravel
+
+Update your `config/app.php` with the service provider:
+
+```php
+'Lsjroberts\Tesco\TescoServiceProvider`,
+```
+
+and facade:
+
+```php
+'Tesco' => 'Lsjroberts\Tesco\Facades\Laravel\Tesco`
+```
+
+#### Standalone
+
+```php
+use Lsjroberts\Tesco\Tesco;
+
+$tesco = new Tesco($devKey, $appKey);
+```
+
+If you wish to create an service provider / adapter for another framework please create a pull request or just create an issue and I'll look into it.
+
+
 Usage
 ---
 
@@ -28,7 +58,7 @@ $jelly = Tesco::search('jelly')->first();
 
 #### Get the customer's basket
 
-You can either get the basket from the previously selected customer:
+You can either get the basket from a previously selected customer:
 
 ```php
 $basket = $customer->getBasket();
@@ -67,4 +97,10 @@ foreach ($categories as $category)
 {
 	$category->getProducts();
 }
+```
+
+#### Get all current offers
+
+```php
+$tesco = Tesco::getOffers();
 ```
