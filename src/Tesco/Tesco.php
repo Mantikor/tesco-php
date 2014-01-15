@@ -1,5 +1,6 @@
 <?php namespace Tesco;
 
+use Exception;
 use Guzzle\Http\Client;
 
 class Tesco

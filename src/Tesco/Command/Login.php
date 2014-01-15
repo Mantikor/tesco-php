@@ -1,6 +1,7 @@
 <?php namespace Tesco\Command;
 
 use Tesco\Resource\Customer;
+use Tesco\Exception\ClientException;
 
 class Login extends Command
 {
@@ -18,7 +19,7 @@ class Login extends Command
 
         if (0 !== $session['StatusCode'])
         {
-            throw new LoginException("Invalid status returned for login request");
+            throw new ClientException("Invalid status returned for login request");
         }
 
         if (isset($session['SessionKey']))

@@ -13,19 +13,19 @@ Add `"lsjroberts/tesco-php": "dev-master"` to your `composer.json`. _Note: this 
 Update your `config/app.php` with the service provider:
 
 ```php
-'Lsjroberts\Tesco\TescoServiceProvider`,
+'Tesco\TescoServiceProvider`,
 ```
 
 and facade:
 
 ```php
-'Tesco' => 'Lsjroberts\Tesco\Facades\Laravel\Tesco`
+'Tesco' => 'Tesco\Facades\Laravel\Tesco`
 ```
 
 #### Standalone
 
 ```php
-use Lsjroberts\Tesco\Tesco;
+use Tesco\Tesco;
 
 $tesco = new Tesco($devKey, $appKey);
 ```
